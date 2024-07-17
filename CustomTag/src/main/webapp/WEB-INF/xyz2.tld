@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<short-name>abc</short-name>
+	<jsp-version>1.2</jsp-version>
+	<tag>
+ 		<name>Incapp</name>
+ 		<tagclass>com.incapp.IncappTag</tagclass>
+ 		<body-content>jsp</body-content>
+ 	</tag>
+</taglib>

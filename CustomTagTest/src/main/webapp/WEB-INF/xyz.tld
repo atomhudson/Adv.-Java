@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<short-name>my</short-name>
+	<jsp-version>1.2</jsp-version>
+ 	<tag>
+ 		<name>Demo</name>
+ 		<tagclass>com.incapp.MyTag</tagclass>
+ 		<body-content>jsp</body-content>
+ 	</tag>
+ 	<tag>
+ 		<name>Rahul</name>
+ 		<tagclass>com.incapp.MyTag2</tagclass>
+ 		<body-content>jsp</body-content>
+ 	</tag>
+</taglib>
