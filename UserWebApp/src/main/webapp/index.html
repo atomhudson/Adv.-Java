@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Example Form</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f4f4f4;
+		}
+
+		.container {
+			max-width: 500px;
+			margin: 50px auto;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.form-group {
+			margin-bottom: 20px;
+		}
+
+		label {
+			display: block;
+			font-weight: bold;
+		}
+
+		input[type="text"],
+		input[type="email"],
+		input[type="number"],
+		input[type="tel"],
+		select,
+		textarea {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-sizing: border-box;
+		}
+
+		input[type="radio"] {
+			margin-right: 5px;
+		}
+
+		.form-group label,
+		.form-group input[type="radio"] {
+			display: inline;
+			margin-right: 10px;
+		}
+
+		.btn {
+			display: inline-block;
+			background-color: #007bff;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			text-align: center;
+		}
+
+		.btn:hover {
+			background-color: #0056b3;
+		}
+
+		/* Styles for search */
+		.search-container {
+			margin-top: 20px;
+			text-align: center;
+			/* Center the content horizontally */
+		}
+
+		.search-container input[type="text"] {
+			width: 490px;
+			/* Adjusted width to match the size of the name field */
+			padding: 10px;
+			margin: 0px;
+			border: 1px solid #ccc;
+			border-radius: 5px 0 0 5px;
+			box-sizing: border-box;
+		}
+
+		.search-container button {
+			display: inline-block;
+			background-color: #007bff;
+			color: #fff;
+			padding: 10px 50px;
+			margin: 10px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.search-container button:hover {
+			background-color: #0056b3;
+		}
+	</style>
+</head>
+
+<body>
+	<form action="SearchUser" method="post" class="search-container">
+		<input type="text" name="search" placeholder="Search by name...">
+		<button type="submit" class="search-btn">Search</button>
+	</form>
+
+
+	<div class="container">
+		<h2>Add User Form</h2>
+		<form action="AddUser" method="post">
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type="text" name="name" required>
+			</div>
+			<div class="form-group">
+				<label for="email">Email:</label>
+				<input type="email" name="email" required>
+			</div>
+			<div class="form-group">
+				<label for="age">Age:</label>
+				<input type="number" name="age" required>
+			</div>
+			<div class="form-group">
+				<label for="phone">Phone Number:</label>
+				<input type="tel" name="phone" required>
+			</div>
+			<div class="form-group">
+				<label>Gender:</label>
+				<input type="radio" name="gender" value="male">
+				<label for="male">Male</label>
+				<input type="radio" name="gender" value="female">
+				<label for="female">Female</label>
+			</div>
+			<div class="form-group">
+				<label for="address">Address:</label>
+				<textarea id="address" name="address" rows="3" style="width: 100%; max-width: 100%;"
+					required></textarea>
+			</div>
+			<div class="button-container">
+				<button type="submit" class="btn">Submit</button>
+			</div>
+		</form>
+	</div>
+
+</body>
+
+</html>

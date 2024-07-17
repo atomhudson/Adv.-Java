@@ -1,0 +1,173 @@
+package com.dhruv.productapp;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+/**
+ * Servlet implementation class AdminHome
+ */
+@WebServlet("/AdminHome")
+public class AdminHome extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession(false);
+		PrintWriter out = response.getWriter();
+
+		if(session == null) {
+			response.sendRedirect("sessionError.html");
+		}else {
+			String name = (String) session.getAttribute("name");
+			out.print("<!DOCTYPE html>\r\n"
+					+ "<html lang=\"en\">\r\n"
+					+ "\r\n"
+					+ "<head>\r\n"
+					+ "	<meta charset=\"UTF-8\">\r\n"
+					+ "	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n"
+					+ "	<title>Add Product Form</title>\r\n"
+					+ "	<style>\r\n"
+					+ "		body {\r\n"
+					+ "			font-family: Arial, sans-serif;\r\n"
+					+ "			background-color: #f4f4f4;\r\n"
+					+ "		}\r\n"
+					+ "\r\n"
+					+ "		.container {\r\n"
+					+ "			max-width: 500px;\r\n"
+					+ "			margin: 50px auto;\r\n"
+					+ "			padding: 20px;\r\n"
+					+ "			background-color: #fff;\r\n"
+					+ "			border-radius: 10px;\r\n"
+					+ "			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\r\n"
+					+ "		}\r\n"
+					+ "\r\n"
+					+ "		.form-group {\r\n"
+					+ "			margin-bottom: 20px;\r\n"
+					+ "		}\r\n"
+					+ "\r\n"
+					+ "		label {\r\n"
+					+ "			display: block;\r\n"
+					+ "			font-weight: bold;\r\n"
+					+ "		}\r\n"
+					+ "\r\n"
+					+ "		input[type=\"text\"],\r\n"
+					+ "		input[type=\"email\"],\r\n"
+					+ "		input[type=\"number\"],\r\n"
+					+ "		input[type=\"tel\"],\r\n"
+					+ "		select,\r\n"
+					+ "		textarea {\r\n"
+					+ "			width: 100%;\r\n"
+					+ "			padding: 10px;\r\n"
+					+ "			border: 1px solid #ccc;\r\n"
+					+ "			border-radius: 5px;\r\n"
+					+ "			box-sizing: border-box;\r\n"
+					+ "		}\r\n"
+					+ "\r\n"
+					+ "		input[type=\"radio\"] {\r\n"
+					+ "			margin-right: 5px;\r\n"
+					+ "		}\r\n"
+					+ "\r\n"
+					+ "		.form-group label,\r\n"
+					+ "		.form-group input[type=\"radio\"] {\r\n"
+					+ "			display: inline;\r\n"
+					+ "			margin-right: 10px;\r\n"
+					+ "		}\r\n"
+					+ "\r\n"
+					+ "		.btn {\r\n"
+					+ "			display: inline-block;\r\n"
+					+ "			background-color: #007bff;\r\n"
+					+ "			color: #fff;\r\n"
+					+ "			padding: 10px 20px;\r\n"
+					+ "			border: none;\r\n"
+					+ "			border-radius: 5px;\r\n"
+					+ "			cursor: pointer;\r\n"
+					+ "			text-align: center;\r\n"
+					+ "		}\r\n"
+					+ "\r\n"
+					+ "		.btn:hover {\r\n"
+					+ "			background-color: #0056b3;\r\n"
+					+ "		}\r\n"
+					+ "\r\n"
+					+ "		/* Styles for search */\r\n"
+					+ "		.search-container {\r\n"
+					+ "			margin-top: 20px;\r\n"
+					+ "			text-align: center;\r\n"
+					+ "			/* Center the content horizontally */\r\n"
+					+ "		}\r\n"
+					+ "\r\n"
+					+ "		.search-container input[type=\"text\"] {\r\n"
+					+ "			width: 490px;\r\n"
+					+ "			/* Adjusted width to match the size of the name field */\r\n"
+					+ "			padding: 10px;\r\n"
+					+ "			margin: 0px;\r\n"
+					+ "			border: 1px solid #ccc;\r\n"
+					+ "			border-radius: 5px 0 0 5px;\r\n"
+					+ "			box-sizing: border-box;\r\n"
+					+ "		}\r\n"
+					+ "\r\n"
+					+ "		.search-container button {\r\n"
+					+ "			display: inline-block;\r\n"
+					+ "			background-color: #007bff;\r\n"
+					+ "			color: #fff;\r\n"
+					+ "			padding: 10px 50px;\r\n"
+					+ "			margin: 10px;\r\n"
+					+ "			border: none;\r\n"
+					+ "			border-radius: 5px;\r\n"
+					+ "			cursor: pointer;\r\n"
+					+ "		}\r\n"
+					+ "\r\n"
+					+ "		.search-container button:hover {\r\n"
+					+ "			background-color: #0056b3;\r\n"
+					+ "		}\r\n"
+					+ "	</style>\r\n"
+					+ "</head>\r\n"
+					+ "\r\n"
+					+ "<body>\r\n"
+					+ "	<form action=\"SearchProduct\" method=\"post\" class=\"search-container\">\r\n"
+					+ "		<input type=\"text\" name=\"pname\" placeholder=\"Search by name...\">\r\n"
+					+ "		<button type=\"submit\" class=\"search-btn\">Search</button>\r\n"
+					+ "	</form>\r\n"
+					+ "\r\n"
+					+ "\r\n"
+					+ "	<div class=\"container\">\r\n"
+					+ "		<h2>Add Product Form</h2>\r\n"
+					+ "		<h3> Hello Admin "+name+"</h3>\r\n"
+					+ "		<form action=\"AddProduct\" method=\"post\">\r\n"
+					+ "			<div class=\"form-group\">\r\n"
+					+ "				<label for=\"pname\">Product Name:</label>\r\n"
+					+ "				<input type=\"text\" name=\"pname\" required>\r\n"
+					+ "			</div>\r\n"
+					+ "			<div class=\"form-group\">\r\n"
+					+ "				<label for=\"cname\">Company Name:</label>\r\n"
+					+ "				<input type=\"text\" name=\"cname\" required>\r\n"
+					+ "			</div>\r\n"
+					+ "			<div class=\"form-group\">\r\n"
+					+ "				<label for=\"pprice\">Product Price:</label>\r\n"
+					+ "				<input type=\"number\" name=\"pprice\" required>\r\n"
+					+ "			</div>\r\n"
+					+ "			<div class=\"form-group\">\r\n"
+					+ "				<label for=\"pdescription\">Product Description:</label>\r\n"
+					+ "				<textarea id=\"address\" name=\"pdescription\" rows=\"3\" style=\"width: 100%; max-width: 100%;\"\r\n"
+					+ "					required></textarea>\r\n"
+					+ "			</div>\r\n"
+					+ "			<div class=\"button-container\">\r\n"
+					+ "				<button type=\"submit\" class=\"btn\">Add Product</button>\r\n"				
+					+ "			</div>\r\n"
+					+ "		</form>\r\n"
+					+ "			<br><a href='Logout'>Logout</a></p>"
+					+ "	</div>\r\n"
+					+ "\r\n"
+					+ "</body>\r\n"
+					+ "\r\n"
+					+ "</html>");
+
+		}
+		
+
+	}
+}
